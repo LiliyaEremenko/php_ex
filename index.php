@@ -5,8 +5,7 @@ $input = new Tag('input');
 
 echo $input
     ->setAttr('value', 'test')
-    ->setAttr('id', 'new')
-    ->setAttr('class', 'eee')
-    ->removeAttr('id')
+    ->setAttrs(['type' => 'submit', 'id' => 'new'])
+    ->setAttr('disabled', 'true')
     ->open();
 ?>

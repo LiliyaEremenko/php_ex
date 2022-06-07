@@ -12,6 +12,13 @@ class Tag {
         return $this;
     }
 
+    public function setAttrs($attrs) {
+        foreach ($attrs as $name => $value) {
+            $this->setAttr($name, $value);
+        }
+        return $this;
+    }
+
     public function removeAttr($name) {
         unset($this->attrs[$name]);
         return $this;
@@ -32,7 +39,12 @@ class Tag {
         if (!empty($attrs)) {
             $result = '';
             foreach ($attrs as $name => $value) {
-                $result .= " $name=\"$value\"";
+                if ($value === true) {
+                    $result .= " $name";
+                }
+                else {
+                    $result .= " $name=\"$value\"";
+                }    
             }
             return $result;
         }
