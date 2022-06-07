@@ -1,10 +1,20 @@
 <?php
 class Tag {
     protected $name;
+    protected $attrs = [];
 
-    public function __construct($name, $attrs = []) {
+    public function __construct($name) {
         $this->name = $name;
-        $this->attrs = $attrs;
+    }
+
+    public function setAttr($name, $value) {
+        $this->attrs[$name] = $value;
+        return $this;
+    }
+
+    public function removeAttr($name) {
+        unset($this->attrs[$name]);
+        return $this;
     }
 
     public function open() {
@@ -22,7 +32,7 @@ class Tag {
         if (!empty($attrs)) {
             $result = '';
             foreach ($attrs as $name => $value) {
-                $result = " $name=\"$value\"";
+                $result .= " $name=\"$value\"";
             }
             return $result;
         }

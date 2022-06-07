@@ -1,11 +1,12 @@
 <?php
 require_once 'tag.php';
 
-$img = new Tag('img', ['alt' => 'image']);
+$input = new Tag('input');
 
-echo $img->open();
-
-$header = new Tag('header');
-
-echo $header->open().'header сайта'.$header->close();
+echo $input
+    ->setAttr('value', 'test')
+    ->setAttr('id', 'new')
+    ->setAttr('class', 'eee')
+    ->removeAttr('id')
+    ->open();
 ?>
