@@ -1,11 +1,6 @@
 <?php
 require_once 'tag.php';
 
-$input = new Tag('input');
-
-echo $input
-    ->setAttr('value', 'test')
-    ->setAttrs(['type' => 'submit', 'id' => 'new'])
-    ->setAttr('disabled', 'true')
-    ->open();
+echo (new Tag('input'))->setAttr('name', 'name1')->setAttr('value', 'text')->open();
+echo (new Tag('input'))->setAttr('name', 'name2')->setAttr('value', 'empty')->open();
 ?>
