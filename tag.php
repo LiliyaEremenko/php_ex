@@ -52,5 +52,19 @@ class Tag {
             return '';
         }
     }
+
+    public function addClass($className) {
+        if (isset($this->attrs['class'])) {
+            $classNames = explode(' ', $this->attrs['class']);
+            if (!in_array($className, $classNames)) {
+                $classNames[] = $className;
+                $this->attrs['class'] = implode(' ', $classNames);
+            }
+        }
+        else {
+            $this->attrs['class'] = $className;
+        }
+        return $this;
+    }
 }
 ?>
