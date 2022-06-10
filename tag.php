@@ -66,5 +66,22 @@ class Tag {
         }
         return $this;
     }
+
+    protected function removeElem($elem, $arr) {
+        $key = array_search($elem, $arr);
+        array_splice($arr, $key, 1);
+        return $arr;
+    }
+
+    public function removeClass($className) {
+        if (isset($this->attrs['class'])) {
+            $classNames = explode(' ', $this->attrs['class']);
+            if (in_array($className, $classNames)) {
+                $classNames = $this->removeElem($className, $classNames);
+                $this->attrs['class'] = implode(' ', $classNames);
+            }    
+        }
+        return $this;
+    }
 }
 ?>
