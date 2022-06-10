@@ -1,13 +1,36 @@
 <?php
-class Tag {
-    protected $name;
-    protected $attrs = [];
+require_once 'iTag.php';
+
+class Tag implements iTag {
+    private $name;
+    private $attrs = [];
 
     public function __construct($name) {
         $this->name = $name;
     }
 
-    public function setAttr($name, $value) {
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getText() {
+        return $this->text;
+    }
+
+    public function getAttrs() {
+        return $this->attrs;
+    }
+
+    public function getAttr($name) {
+        if (isset($this->attrs[$name])) {
+            return $this->attrs[$name];
+        }
+        else {
+            return null;
+        }
+    }
+
+    public function setAttr($name, $value = true) {
         $this->attrs[$name] = $value;
         return $this;
     }
@@ -35,7 +58,7 @@ class Tag {
         return "</$name>";
     }
 
-    protected function getAttrsStr($attrs) {
+    private function getAttrsStr($attrs) {
         if (!empty($attrs)) {
             $result = '';
             foreach ($attrs as $name => $value) {
@@ -67,7 +90,7 @@ class Tag {
         return $this;
     }
 
-    protected function removeElem($elem, $arr) {
+    private function removeElem($elem, $arr) {
         $key = array_search($elem, $arr);
         array_splice($arr, $key, 1);
         return $arr;
