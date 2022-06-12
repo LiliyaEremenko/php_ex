@@ -1,24 +1,18 @@
 <?php
 require_once 'tag.php';
-require_once 'image.php';
-require_once 'link.php';
-require_once 'htmlList.php';
+require_once 'form.php';
+require_once 'input.php';
 
-$list = new HtmlList('ul');
+$form = (new Form)->setAttrs(['action' => '', 
+		'method' => 'GET']);
 	
-	echo $list
-		->addItem((new ListItem())->setText('item1'))
-		->addItem((new ListItem())->setText('item2'))
-		->addItem((new ListItem())->setText('item3'));
-
-$ul = new Ul;
-$ol = new Ol;
-
-echo $ul
-	->addItem((new ListItem())->setText('one'))
-	->addItem((new ListItem())->setText('two'));
-
-echo $ol
-	->addItem((new ListItem())->setText('one'))
-	->addItem((new ListItem())->setText('two'));
+ 	echo $form->open();
+		echo (new Input)->setAttr('name', 'a');
+		echo (new Input)->setAttr('name', 'b');
+		echo (new Input)->setAttr('name', 'c');
+		echo (new Input)->setAttr('name', 'd');
+		echo (new Input)->setAttr('name', 'e');
+		echo (new Input)->setAttr('type', 'submit');
+	echo $form->close();
+echo $sum;
 ?>
