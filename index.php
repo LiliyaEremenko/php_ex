@@ -5,12 +5,12 @@ require_once 'input.php';
 require_once 'submit.php';
 require_once 'password.php';
 require_once 'hidden.php';
+require_once 'textarea.php';
 
-$form = (new Form)->setAttrs(['action' => '', 'method' => 'GET']);
+$form = (new Form)->setAttrs(['method' => 'GET']);
 
 echo $form->open();
-echo (new Input)->setAttr('name', 'login');
-echo (new Hidden)->setAttr('name', 'pass')->setAttr('value', 'empty');
+echo (new Textarea)->setAttr('name', 'message');
 echo new Submit;
 echo $form->close();
 ?>
