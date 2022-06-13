@@ -4,15 +4,16 @@ require_once 'form.php';
 require_once 'input.php';
 require_once 'submit.php';
 require_once 'hidden.php';
-require_once 'checkbox.php';
-require_once 'radio.php';
+require_once 'select.php';
 
-$form = (new Form)->setAttrs(['action' => '', 'method' => 'GET']);
-
+$form = (new Form)->setAttrs(['action' => ' ', 'method' => 'GET']);
+$sel = 	new Select;
 echo $form->open();
-echo (new Radio)->setAttr('name', 'check');
-echo (new Radio)->setAttr('name', 'check');
-echo (new Input)->setAttr('name', 'login');
+echo $sel->setAttr('name', 'list')
+	->add( (new Option())->setText('item1') )
+	->add( (new Option())->setText('item2') )
+	->add( (new Option())->setText('item3') )
+	->show();
 echo new Submit;
-echo $form->close();
+	echo $form->close();
 ?>
